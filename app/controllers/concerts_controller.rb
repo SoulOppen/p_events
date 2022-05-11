@@ -13,16 +13,18 @@ class ConcertsController < ApplicationController
   # GET /concerts/new
   def new
     @concert = Concert.new
+    @groups= Group.all
   end
 
   # GET /concerts/1/edit
   def edit
+    @groups= Group.all
   end
 
   # POST /concerts or /concerts.json
   def create
     @concert = Concert.new(concert_params)
-
+    @groups= Group.all
     respond_to do |format|
       if @concert.save
         format.html { redirect_to concert_url(@concert), notice: "Concert was successfully created." }
@@ -65,6 +67,6 @@ class ConcertsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def concert_params
-      params.require(:concert).permit(:attendance, :duration, :place, :date)
+      params.require(:concert).permit(:group_id, :attendance, :duration, :place, :date)
     end
 end

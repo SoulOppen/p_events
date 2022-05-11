@@ -18,5 +18,14 @@
     <strong>Group type:</strong>
     <%= group.group_type %>
   </p>
-
+  <th>
+    <strong>Concerts:</strong> <%=group.q_concert%>
+  </th>
+  <td>
+    <% group.concerts.each do |concert|%>
+      <ul>
+        <li><%= concert.place %></li>
+      </ul>
+    <%end%>
+  </td> 
 </div>
