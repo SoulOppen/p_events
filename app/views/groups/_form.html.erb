@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :group_type, style: "display: block" %>
-    <%= form.number_field :group_type %>
+    <%= form.select :group_type, options_for_select(@group_type)%>
   </div>
 
   <div>

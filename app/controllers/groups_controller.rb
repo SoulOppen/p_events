@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.eager_load(:concerts)
   end
 
   # GET /groups/1 or /groups/1.json
@@ -13,10 +13,12 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    @group_type=Group.group_types.keys
   end
 
   # GET /groups/1/edit
   def edit
+    @group_type=Group.group_types.keys
   end
 
   # POST /groups or /groups.json
